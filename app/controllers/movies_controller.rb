@@ -6,7 +6,6 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
-    flash.now[:requirements] = "Movie title and year are required"
   end
 
   def create
@@ -17,14 +16,15 @@ class MoviesController < ApplicationController
       redirect_to movies_path
     else
       flash.now[:errors] = @movie.errors.full_messages.to_sentence
-      render 'movies/new'
+      render :new
     end
 
   end
 
   private
+
   def movie_params
-    params.require(:movie).permit(:movie_title, :movie_year, :movie_director, :movie_url, :movie_description)
+    params.require(:movie).permit(:title, :year, :director, :url, :description)
   end
 
 end

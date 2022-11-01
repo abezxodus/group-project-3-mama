@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  validates :movie_title, presence: true
-  validates :movie_year, presence: true
+  validates :title, presence: true
+  validates :year, presence: true
 
 end
