@@ -6,9 +6,9 @@ feature "view list of movies on movie index page", %Q{
     So that I can see all of the movie titles
   }  do
 
-  let!(:movie1) {Movie.create(movie_title: "Test Title 1", movie_director: "Test Director 1", movie_year: "2022", movie_description: "Not as good as the book")}
-  let!(:movie2) {Movie.create(movie_title: "Test Title 2", movie_director: "Test Director 2", movie_year: "2023")}
-  let!(:movie3) {Movie.create(movie_title: "Test Title 3", movie_year: "2024")}
+  let!(:movie1) {Movie.create(title: "Test Title 1", director: "Test Director 1", year: "2022", description: "Not as good as the book")}
+  let!(:movie2) {Movie.create(title: "Test Title 2", director: "Test Director 2", year: "2023")}
+  let!(:movie3) {Movie.create(title: "Test Title 3", year: "2024")}
 
   scenario "visit homepage" do
 
