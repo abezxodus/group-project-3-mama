@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import MovieTileContainer from './MovieTileContainer'
+import MovieTileShowContainer from './MovieTileShowContainer'
 
 const MovieShowContainer = (props) => {
   const [movies, setMovies] = useState({})
 
   const fetchMovies = async () => {
     const url = window.location.pathname
-    // const movieId = props.match.params.id
     try {
       const response = await fetch(`/api/v1${url}`)
-      // const response = await fetch(`/api/v1$/movies${movieId}`)
       if(!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error (errorMessage)
@@ -28,7 +26,7 @@ const MovieShowContainer = (props) => {
   }, [])
   
   return (
-    <MovieTileContainer
+    <MovieTileShowContainer
       key={movies.id}
       movies={movies}
     />

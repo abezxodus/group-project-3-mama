@@ -1,6 +1,6 @@
 import React from "react"
 
-const MovieTileContainer = (props) => {
+const MovieTileShowContainer = (props) => {
 
   let director = "No Director Supplied"
   let description = "No Synopsis Supplied"
@@ -29,4 +29,4 @@ const MovieTileContainer = (props) => {
   )
 }
 
-export default MovieTileContainer
+export default MovieTileShowContainer
