@@ -4,10 +4,11 @@ import { Link } from "react-router-dom"
 const IndexMovieTile = (props) => {
 
   return(
-    <li>
+    <Link to={`/movies/${props.id}`}>
       {props.title}
-    </li>
+    </Link>
   )
+  
 }
 
 export default IndexMovieTile

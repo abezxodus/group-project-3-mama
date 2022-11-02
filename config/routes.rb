@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   get '/movies', to: "static_pages#index"
 
+  get '/movies/:id', to: "static_pages#index"
+
   namespace :api do
     namespace :v1 do
-      resources :movies, only: [:index]
+      resources :movies, only: [:index, :show]
     end
   end
 
