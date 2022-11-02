@@ -1,8 +1,7 @@
 class Api::V1::MoviesController < ApiController
 
   def index
-    movies = Movie.all
-    render json: movies
+    render json: Movie.all
   end
 
 end

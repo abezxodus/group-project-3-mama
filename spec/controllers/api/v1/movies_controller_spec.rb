@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::MoviesController, type: :controller do
-  let!(:movie1) {Movie.create(title: "Test Title 1", director: "Test Director 1", year: "2022", description: "Not as good as the book")}
-  let!(:movie2) {Movie.create(title: "Test Title 2", director: "Test Director 2", year: "2021", description: "Better than the book")}
+  let!(:movie1) { Movie.create(title: "Test Title 1", director: "Test Director 1", year: "2022", description: "Not as good as the book") }
+  let!(:movie2) { Movie.create(title: "Test Title 2", director: "Test Director 2", year: "2021", description: "Better than the book") }
   
   describe "GET#index" do
     it "should return a list of movie titles" do
