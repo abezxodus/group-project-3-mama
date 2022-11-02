@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2022_10_31_194243) do
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.string "movie_title", null: false
-    t.string "movie_director"
-    t.string "movie_image"
-    t.string "movie_year", null: false
-    t.string "movie_description"
+    t.string "title", null: false
+    t.string "director"
+    t.string "image", default: "https://ih1.redbubble.net/image.1030805532.6483/st,small,845x845-pad,1000x1000,f8f8f8.jpg"
+    t.string "year", null: false
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
