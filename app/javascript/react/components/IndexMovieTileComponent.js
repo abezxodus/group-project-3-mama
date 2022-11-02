@@ -6,12 +6,12 @@ const IndexMovieTile = (props) => {
 
   return(
     <div>
-      <li>
+      <Link to={`/movies/${props.id}`}>
         {props.title}
-      </li>
+      </Link>
     </div>
   )
-
+  
 }
 
 export default IndexMovieTile

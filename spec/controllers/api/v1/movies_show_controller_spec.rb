@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::MoviesController, type: :controller do
-  let!(:movie1) {Movie.create(title: "Test Title 1", director: "Test Director 1", year: "2022", description: "Not as good as the book")}
+  let!(:movie1) { Movie.create(title: "Test Title 1", director: "Test Director 1", year: "2022", description: "Not as good as the book") }
 
   describe "GET#show" do
     it "should return an individual movie with all its attributes" do
