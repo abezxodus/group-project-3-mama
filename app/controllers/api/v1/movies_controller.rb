@@ -1,12 +1,10 @@
 class Api::V1::MoviesController < ApiController
 
   def index
-    movies = Movie.all
-    render json: movies
+    render json: Movie.all
   end
 
   def show
-      movie = Movie.find(params[:id]) 
-      render json: movie
+    render json: Movie.find(params[:id]) 
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe Api::V1::MoviesController, type: :controller do
   describe "GET#show" do
     it "should return an individual movie with all its attributes" do
 
-      get :show, params: {id: movie1.id}
+      get :show, params: { id: movie1.id }
       
       returned_json = JSON.parse(response.body)
 

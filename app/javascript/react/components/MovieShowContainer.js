@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import MovieTileShowContainer from './MovieTileShowContainer'
 
 const MovieShowContainer = (props) => {
-  const [movies, setMovies] = useState({})
+  const [movie, setMovie] = useState({})
 
-  const fetchMovies = async () => {
+  const fetchMovie = async () => {
     const url = window.location.pathname
     try {
       const response = await fetch(`/api/v1${url}`)
@@ -13,8 +13,8 @@ const MovieShowContainer = (props) => {
         const error = new Error (errorMessage)
         throw(error)
       } else {
-        const parsedMovies = await response.json()
-        setMovies(parsedMovies)
+        const parsedMovie = await response.json()
+        setMovie(parsedMovie)
       }
     } catch(err) {
       console.error(`Error in Fetch: ${err.message}`)
@@ -22,13 +22,13 @@ const MovieShowContainer = (props) => {
   }
 
   useEffect (() => {
-    fetchMovies()
+    fetchMovie()
   }, [])
   
   return (
     <MovieTileShowContainer
-      key={movies.id}
-      movies={movies}
+      key={movie.id}
+      movie={movie}
     />
   )
 }
