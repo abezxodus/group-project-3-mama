@@ -22,7 +22,6 @@ const MovieTileShowContainer = (props) => {
         <li>Directed by: {director}</li>
         <li>Synopsis: {description}</li>
       </ul>
-      <a href='/movies'>Return to Homepage</a>
   </div>
   )
 }
