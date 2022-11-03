@@ -169,4 +169,5 @@ movie160 = Movie.create(title: "The Power of the Dog", year: "2021")
 movie161 = Movie.create(title: "West Side Story", year: "2021")
 
 
+
 # review1 = Review.create(rating: "5", review: "Review1", movie: movie1)
