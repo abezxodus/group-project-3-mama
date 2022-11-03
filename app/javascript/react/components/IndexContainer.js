@@ -13,7 +13,7 @@ const IndexContainer = (props) => {
         throw(error)
       } else {
         const parsedMovies = await response.json()
-        setMovies(movies.concat(parsedMovies))
+        setMovies(movies.concat(parsedMovies.movies))
       }
     } catch(err) {
       console.error(`Error in Fetch: ${err.message}`)
