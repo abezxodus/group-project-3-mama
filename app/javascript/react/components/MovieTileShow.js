@@ -15,20 +15,12 @@ const MovieTileShow = (props) => {
   } 
 
   const reviews = props.movie.reviews.map((review) => {
-    // debugger
     return (
-      // <ReviewTile 
-      // key={review.body}
-      // rating={review.rating}
-      // body={review.body}
-      // />
-
-      <div key={review.body}
-      review = {review}>
-        {/* <li>Rating: {review.rating}</li> */}
-        {/* <p>Review: {review.body}</p> */}
-      </div>
-    )
+      <ReviewTile 
+      key={review.body}
+      rating={review.rating}
+      body={review.body}
+      />)
   })
   return (
     <div>
@@ -42,8 +34,7 @@ const MovieTileShow = (props) => {
 
       <div className="reviews">
         {reviews}
-
-        {/* <ReviewTile /> */}
+        <ReviewTile />
       </div>
       <a href='/movies'>Return to Homepage</a>
   </div>

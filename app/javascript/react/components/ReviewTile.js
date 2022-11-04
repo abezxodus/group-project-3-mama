@@ -1,10 +1,11 @@
 import React from "react"
+import MovieTileShow from "./MovieTileShow"
 
 const ReviewTile = (props) => {
   return (
     <div>
-        <li>Rating: {props.review.rating}</li>
-        {/* <p>Review: {props.body}</p> */}
+        <li>Rating: {props.rating}</li>
+        <p>Review: {props.body}</p>
       </div>
   )
 }
