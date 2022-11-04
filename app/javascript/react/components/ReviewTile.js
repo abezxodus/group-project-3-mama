@@ -1,5 +1,4 @@
 import React from "react"
-import MovieTileShow from "./MovieTileShow"
 
 const ReviewTile = (props) => {
   return (
