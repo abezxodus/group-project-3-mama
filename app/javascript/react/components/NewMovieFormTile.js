@@ -1,38 +1,79 @@
-import React from "react"
+import React, {useState} from "react"
 import ErrorList from "./ErrorList";
+import _ from "lodash"
 
-const NewMovieFormTile = props => {
+const NewMovieFormTile = (props) => {
+
+  const [errors, setErrors] = useState({})
+  const [movieRecord, setMovieRecord] = useState({
+    title: "",
+    year: "",
+    director: "",
+    image: "",
+    description: ""
+  })
+
+  const submitHandler = async (event) => {
+    event.preventDefault()
+    if (validForSubmission()) {
+      props.addMovie(movieRecord)
+    }
+  }
+
+  const handleInputChange = (event) => {
+    setMovieRecord({
+      ...movieRecord,
+      [event.currentTarget.name]: event.currentTarget.value
+    })
+  }
+
+  const validForSubmission = () => {
+    let submitErrors = {}
+    const requiredFields = ["title", "year"]
+    requiredFields.forEach(field => {
+      if (movieRecord[field].trim() === "") {
+        submitErrors = {
+          ...submitErrors,
+          [field]: "is blank"
+        }
+      }
+    })
+  
+    setErrors(submitErrors)
+    return _.isEmpty(submitErrors)
+  }
 
   return (   
-    <form className="callout">
-      <ErrorList errors={props.errors}/>
+    <form className="callout" onSubmit={submitHandler}>
+      <ErrorList errors={errors}/>
+
       <label htmlFor="title">
         Title
-        <input type="text" name="title" onChange={props.handleInputChange} value={props.movieRecord.title}/>
+        <input type="text" name="title" onChange={handleInputChange} value={movieRecord.title}/>
       </label>
 
       <label htmlFor="year">
         Year
-        <input type="text" name="year" onChange={props.handleInputChange} value={props.movieRecord.year}/>
+        <input type="text" name="year" onChange={handleInputChange} value={movieRecord.year}/>
       </label>
 
       <label htmlFor="director">
         Director
-        <input type="text" name="director" onChange={props.handleInputChange} value={props.movieRecord.director}/>
+        <input type="text" name="director" onChange={handleInputChange} value={movieRecord.director}/>
       </label>
 
       <label htmlFor="image">
         Image
-        <input type="text" name="image" onChange={props.handleInputChange} value={props.movieRecord.image}/>
+        <input type="text" name="image" onChange={handleInputChange} value={movieRecord.image}/>
       </label>
       
       <label htmlFor="description">
         Description
-        <input type="text" name="description" onChange={props.handleInputChange} value={props.movieRecord.description}/>
+        <input type="text" name="description" onChange={handleInputChange} value={movieRecord.description}/>
       </label>
 
       <div className="button-group">
-        <input className="button" type="submit" value="Submit" onClick={props.submitHandler}/>
+        <input className="button" type="submit" value="Submit"/>
       </div>
   </form>
   )

@@ -9,7 +9,15 @@ class Api::V1::MoviesController < ApiController
   end
 
   def create
-    movie = Movie.create(movie_params)
+    movie = Movie.new(movie_params)
+    if movie.save
+      saved = {movieSaved: true, response: movie.id}
+      render json: saved
+    else
+      saved = {movieSaved: false, response: movie.errors.full_messages}
+      render json: saved
+    end
+
   end
 
   private

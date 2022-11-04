@@ -1,18 +1,10 @@
 import React, {useState} from "react"
-import _ from "lodash"
 import NewMovieFormTile from "./NewMovieFormTile"
+import { Redirect } from "react-router-dom"
 
 const NewMovieForm = (props) => {
-  const clearForm = {
-    title: "",
-    year: "",
-    director: "",
-    image: "",
-    description: ""
-  }
 
-  const [movieRecord, setMovieRecord] = useState(clearForm)
-  const [errors, setErrors] = useState({})
+  const [success, setSuccess] = useState({movieSaved: false, response: []})
 
   const addMovie = async (formPayload) => {
     try {
@@ -30,49 +22,37 @@ const NewMovieForm = (props) => {
         const error = new Error(errorMessage)
         throw(error)
       }
-      setMovieRecord(clearForm)
-    }catch(error) {
+      const responseBody = await response.json()
+      setSuccess(responseBody)
+    } catch(error) {
       console.log(`Error in fetch: ${error.message}`)
     }
   }
 
-  const submitHandler = async (event) => {
-    event.preventDefault()
-    if (validForSubmission()) {
-      addMovie(movieRecord)
+  const redirectSwitch = () => {
+    if(success.movieSaved) {
+      return (
+        <Redirect to={`/movies/${success.response}`}/>
+      )
+    } else {
+      const errorsArray = success.response.map ((error) => {
+        return (
+          <div className="callout alert">
+            <li>{error}</li>
+          </div>
+        )
+      })
+      return errorsArray
     }
   }
 
-  const handleInputChange = (event) => {
-    setMovieRecord({
-      ...movieRecord,
-      [event.currentTarget.name]: event.currentTarget.value
-    })
-  }
-
-  const validForSubmission = () => {
-    let submitErrors = {}
-    const requiredFields = ["title", "year"]
-    requiredFields.forEach(field => {
-      if (movieRecord[field].trim() === "") {
-        submitErrors = {
-          ...submitErrors,
-          [field]: "is blank"
-        }
-      }
-    })
-  
-    setErrors(submitErrors)
-    return _.isEmpty(submitErrors)
-  }
-
   return (
-    <NewMovieFormTile 
-      submitHandler={submitHandler}
-      handleInputChange={handleInputChange}
-      movieRecord={movieRecord}
-      errors={errors}
+    <div>
+      {redirectSwitch()}
+      <NewMovieFormTile 
+        addMovie={addMovie}
       />
+    </div>
   )
 } 
 
