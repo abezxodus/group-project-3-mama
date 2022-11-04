@@ -4,6 +4,10 @@ class Api::V1::MoviesController < ApiController
     render json: Movie.all
   end
 
+  def create
+    binding.pry
+  end
+
   def show
     render json: Movie.find(params[:id]), serializer: MovieShowSerializer
   end

@@ -1,5 +1,6 @@
 import React from "react"
 import ReviewTile from "./ReviewTile"
+import ReviewForm from "./ReviewForm"
 
 
 const MovieTileShow = (props) => {
@@ -31,7 +32,8 @@ const MovieTileShow = (props) => {
         <li>Directed by: {director}</li>
         <li>Synopsis: {description}</li>
       </ul>
-
+      <ReviewForm movieId={props.movie.id}/>
+     
       <div className="reviews">
         {reviews}
       </div>
