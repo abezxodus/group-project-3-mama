@@ -2116,3 +2116,9 @@ movie161 = Movie.create(
 On the harsh streets of the upper west side, two gangs battle for control of the turf. 
 The situation becomes complicated when a gang members falls in love with a rival's sister."
 )
+test_user = User.create(email:'testpass@example.com', password: 'valid_password', password_confirmation: 'valid_password')
+
+review1 = Review.create(rating: "5", body: "Best movie I ever watched", movie_id: movie1.id, user_id: test_user.id)
+review2 = Review.create(rating: "4", body: "So Good I left several comments!", movie_id: movie1.id, user_id: test_user.id)
+review3 = Review.create(rating: "5", body: "Everyone should watch this movie", movie_id: movie2.id, user_id: test_user.id)
+review4 = Review.create(rating: "2", body: "Disappointed in the plot", movie_id: movie2.id, user_id: test_user.id)

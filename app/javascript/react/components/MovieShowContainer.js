@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import MovieTileShowContainer from './MovieTileShowContainer'
+import MovieTileShow from './MovieTileShow'
 
 const MovieShowContainer = (props) => {
-  const [movie, setMovie] = useState({})
+  const [movie, setMovie] = useState({
+    reviews: []
+  })
 
   const fetchMovie = async () => {
     const url = window.location.pathname
@@ -26,7 +28,7 @@ const MovieShowContainer = (props) => {
   }, [])
   
   return (
-    <MovieTileShowContainer
+    <MovieTileShow
       key={movie.id}
       movie={movie}
     />
