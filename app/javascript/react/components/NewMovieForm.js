@@ -51,6 +51,6 @@ const NewMovieForm = (props) => {
       />
     </div>
   )
-} 
+}
 
 export default NewMovieForm

@@ -15,7 +15,6 @@ class Api::V1::MoviesController < ApiController
     else
       render json: { errors: movie.errors.full_messages }
     end
-
   end
 
   private
