@@ -1,10 +1,11 @@
 import React, {useState} from "react"
 import NewMovieFormTile from "./NewMovieFormTile"
 import { Redirect } from "react-router-dom"
+import ApiErrorList from "./ApiErrorList"
 
 const NewMovieForm = (props) => {
-
-  const [success, setSuccess] = useState({movieSaved: false, response: []})
+  const [movie, setMovie] = useState({})
+  const [errors, setErrors] = useState([])
 
   const addMovie = async (formPayload) => {
     try {
@@ -23,32 +24,28 @@ const NewMovieForm = (props) => {
         throw(error)
       }
       const responseBody = await response.json()
-      setSuccess(responseBody)
+      if(responseBody.movie){
+        setMovie(responseBody.movie) 
+      } else {
+        setErrors(responseBody.errors)
+      }
+
     } catch(error) {
       console.log(`Error in fetch: ${error.message}`)
     }
   }
 
-  const redirectSwitch = () => {
-    if(success.movieSaved) {
-      return (
-        <Redirect to={`/movies/${success.response}`}/>
-      )
-    } else {
-      const errorsArray = success.response.map ((error) => {
-        return (
-          <div className="callout alert">
-            <li>{error}</li>
-          </div>
-        )
-      })
-      return errorsArray
-    }
+  let fetchReturn
+  if(movie.id) {
+    fetchReturn = <Redirect to={`/movies/${movie.id}`}/>
+  } 
+  if (errors.length > 0) {
+    fetchReturn = <ApiErrorList errors={errors}/>
   }
 
   return (
     <div>
-      {redirectSwitch()}
+      {fetchReturn}
       <NewMovieFormTile 
         addMovie={addMovie}
       />

@@ -11,11 +11,9 @@ class Api::V1::MoviesController < ApiController
   def create
     movie = Movie.new(movie_params)
     if movie.save
-      saved = {movieSaved: true, response: movie.id}
-      render json: saved
+      render json: movie, serializer: MovieShowSerializer
     else
-      saved = {movieSaved: false, response: movie.errors.full_messages}
-      render json: saved
+      render json: { errors: movie.errors.full_messages }
     end
 
   end
@@ -25,5 +23,4 @@ class Api::V1::MoviesController < ApiController
   def movie_params
     params.require(:movie).permit(:title, :year, :director, :image, :description)
   end
-
 end
