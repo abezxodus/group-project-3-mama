@@ -44,36 +44,31 @@ const NewMovieFormTile = (props) => {
   }
 
   return (   
-    <form className="callout" onSubmit={submitHandler}>
+    <form className="callout grid-x grid-margin-x" onSubmit={submitHandler}>
       <ErrorList errors={errors}/>
 
-      <label htmlFor="title">
+      <label  className="cell small-12 medium-6 large-8" htmlFor="title">
         Title
-        <input type="text" name="title" onChange={handleInputChange} value={movieRecord.title}/>
+        <input id="title" type="text" name="title" onChange={handleInputChange} value={movieRecord.title}/>
       </label>
 
-      <label htmlFor="year">
+      <label  className="cell small-12 medium-6 large-4" htmlFor="year">
         Year
-        <input type="text" name="year" onChange={handleInputChange} value={movieRecord.year}/>
+        <input id="year" type="text" name="year" onChange={handleInputChange} value={movieRecord.year}/>
       </label>
 
-      <label htmlFor="director">
+      <label  className="cell small-12 medium-6 large-8" htmlFor="director">
         Director
-        <input type="text" name="director" onChange={handleInputChange} value={movieRecord.director}/>
-      </label>
-
-      <label htmlFor="image">
-        Image
-        <input type="text" name="image" onChange={handleInputChange} value={movieRecord.image}/>
+        <input id="director" type="text" name="director" onChange={handleInputChange} value={movieRecord.director}/>
       </label>
       
-      <label htmlFor="description">
+      <label  className="cell small-12 medium-6 large-12" htmlFor="description">
         Description
-        <input type="text" name="description" onChange={handleInputChange} value={movieRecord.description}/>
+        <input id="description" type="text" name="description" onChange={handleInputChange} value={movieRecord.description}/>
       </label>
 
       <div className="button-group">
-        <input className="button" type="submit" value="Submit"/>
+        <input className="custom-button" type="submit" value="Submit"/>
       </div>
   </form>
   )

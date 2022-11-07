@@ -35,17 +35,15 @@ const NewMovieForm = (props) => {
     }
   }
 
-  let fetchReturn
   if(movie.id) {
-    fetchReturn = <Redirect to={`/movies/${movie.id}`}/>
-  } 
-  if (errors.length > 0) {
-    fetchReturn = <ApiErrorList errors={errors}/>
+    return (
+      <Redirect to={`/movies/${movie.id}`}/>
+    )
   }
 
   return (
-    <div>
-      {fetchReturn}
+    <div className="callout">
+      <ApiErrorList errors={errors}/>
       <NewMovieFormTile 
         addMovie={addMovie}
       />

@@ -5,15 +5,15 @@ const ApiErrorList = props => {
   const errorItems = props.errors.map(error => {
     i++
     return (
-      <li key={i}>
-        {error}
-      </li>
+      <div className="callout alert callout alert grid-x cell large-12">
+        <li key={i}>
+          {error}
+        </li>
+      </div>
     )
   })
   return (
-    <div className="callout alert">
       <ul>{errorItems}</ul>
-    </div>
   )
 }
 
