@@ -14,7 +14,7 @@ const ErrorList = props => {
       )
     })
     return (
-      <div className="callout alert large-12 cell">
+      <div className="callout alert grid-x cell large-12">
         <ul>{listItems}</ul>
       </div>
     )

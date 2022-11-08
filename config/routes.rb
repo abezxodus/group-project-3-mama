@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  root 'movies#index'
+  root 'static_pages#index'
   devise_for :users
 
   get '/movies', to: "static_pages#index"
-
   get '/movies/:id', to: "static_pages#index"
+  get '/movies/new', to: "static_pages#index"
 
   namespace :api do
     namespace :v1 do
@@ -13,5 +13,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end
