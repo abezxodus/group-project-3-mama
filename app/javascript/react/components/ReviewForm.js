@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import ErrorList from "./ErrorList";
+import _ from 'lodash'
 
 const ReviewForm = (props) => {
-  const [reviewRecord, setReviewRecord] = useState({
+  const [errors, setErrors] = useState({})
+  const clearState = {
     rating: "",
     body: ""
-  })
+  }
+  const [reviewRecord, setReviewRecord] = useState(clearState)
 
   const handleInputChange = event => {
     setReviewRecord ({
@@ -13,40 +17,58 @@ const ReviewForm = (props) => {
     })
   }
 
-  // const addReview = async (formPayload) => {
-  // }
-  
-  const handleSubmit = async (event) => {
-    event.preventDefault 
-    // addReview(reviewRecord)
-    // debugger
-    let formPayload = {
-      review: reviewRecord
-    }
-
-    try {
-      const response = await fetch(`/api/v1/movies/${props.movieId}/reviews`, {
-        credentials: "same-origin",
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formPayload)
-      })
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
+  const validForSubmission = () => {
+    let submitErrors = {}
+    const requiredFields = ["body", "rating"]
+    requiredFields.forEach(field => {
+      if (reviewRecord[field].trim() === "") {
+        submitErrors = {
+          ...submitErrors,
+          [field]: "is blank"
+        }
       }
-      // debugger
-      const responseBody = await response.JSON()
-    } catch (error){
-        console.error(`Error in Fetch: ${error.message}`)
+    })
+  
+    setErrors(submitErrors)
+    return _.isEmpty(submitErrors)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    if (validForSubmission()) {
+      let formPayload = {
+        review: reviewRecord
+      }
+  
+      try {
+        const response = await fetch(`/api/v1/movies/${props.movie.id}/reviews`, {
+          credentials: "same-origin",
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formPayload)
+        })
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`
+          throw new Error(errorMessage)
+        }
+        const responseBody = await response.json()
+        setReviewRecord(clearState)
+        props.setMovie({
+          ...props.movie,
+          reviews: [...props.movie.reviews, responseBody.review]
+        })
+      } catch (error) {
+          console.error(`Error in Fetch: ${error.message}`)
+      }
     }
   }
 
   return (
     <form className="callout" onSubmit={handleSubmit}>
+      <ErrorList errors={errors} />
       <label html="rating">
         Rating:
         <input id="rating" name="rating" onChange={handleInputChange} value={reviewRecord.rating}/>

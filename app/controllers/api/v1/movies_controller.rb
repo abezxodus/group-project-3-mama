@@ -5,7 +5,6 @@ class Api::V1::MoviesController < ApiController
   end
 
   def create
-    binding.pry
   end
 
   def show
