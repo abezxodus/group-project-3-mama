@@ -18,10 +18,10 @@ const MovieTileShow = (props) => {
   const reviews = props.movie.reviews.map((review) => {
     return (
       <ReviewTile 
-      key={review.body}
-      rating={review.rating}
-      body={review.body}
-      setMovie={props.setMovie}
+        key={review.body}
+        rating={review.rating}
+        body={review.body}
+        setMovie={props.setMovie}
       />)
   })
 

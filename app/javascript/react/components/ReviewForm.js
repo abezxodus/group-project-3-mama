@@ -78,58 +78,46 @@ const ReviewForm = (props) => {
       addReview(reviewRecord)
     }
   }
-
-  let userSignInMessage = (
-    <div className="callout grid-x grid-padding-x">
-      <h5 className="cell text-center">
-        You must be signed in to post a review. Press the button below to sign in.
-      </h5>
-      <a className="cell" href="/users/sign_in">
-        <input className="button cell" type="submit" value="Sign in"/>
-      </a>
-    </div>
-  )
-
-  let newReviewForm = (
-    <form onSubmit={handleSubmit} className="callout grid-x grid-padding-x" >
-      <ErrorList errors={errors} />
-      <div className="cell large-9 flex-container flex-dir-column" >
-        <fieldset className="primary flex-child-shrink" >
-          <legend>Rating</legend>
-            <input type="radio" name="rating" onChange={handleInputChange} value="1" id="1" checked={reviewRecord.rating === '1'}/><label>1</label>
-            <input type="radio" name="rating" onChange={handleInputChange} value="2" id="2" checked={reviewRecord.rating === '2'}/><label>2</label>
-            <input type="radio" name="rating" onChange={handleInputChange} value="3" id="3" checked={reviewRecord.rating === '3'}/><label>3</label>
-            <input type="radio" name="rating" onChange={handleInputChange} value="4" id="4" checked={reviewRecord.rating === '4'}/><label>4</label>
-            <input type="radio" name="rating" onChange={handleInputChange} value="5" id="5" checked={reviewRecord.rating === '5'}/><label>5</label>
-        </fieldset>
-        <label htmlFor="body" className="primary flex-child-auto" >
-          Review:
-          <textarea 
-            className="cell large-12 review-input" 
-            id="body" 
-            name="body" 
-            onChange={handleInputChange} 
-            value={reviewRecord.body} 
-            rows="2"
-            wrap="soft"
-          /> 
-        </label>
-      </div>
-      <input className="button cell large-3" type="submit" value="Add your review!"/>
-    </form>
-  )
   
   if (user === "none") {
     return (
-      <div>
-        {userSignInMessage}
+      <div className="callout grid-x grid-padding-x">
+        <h5 className="cell text-center">
+          You must be signed in to post a review. Press the button below to sign in.
+        </h5>
+        <a className="cell" href="/users/sign_in">
+          <input className="button cell" type="submit" value="Sign in"/>
+        </a>
       </div>
     )
   } else {
     return (
-      <div>
-        {newReviewForm}
-      </div>
+      <form onSubmit={handleSubmit} className="callout grid-x grid-padding-x" >
+        <ErrorList errors={errors} />
+        <div className="cell large-9 flex-container flex-dir-column" >
+          <fieldset className="primary flex-child-shrink" >
+            <legend>Rating</legend>
+              <input type="radio" name="rating" onChange={handleInputChange} value="1" id="1" checked={reviewRecord.rating === '1'}/><label>1</label>
+              <input type="radio" name="rating" onChange={handleInputChange} value="2" id="2" checked={reviewRecord.rating === '2'}/><label>2</label>
+              <input type="radio" name="rating" onChange={handleInputChange} value="3" id="3" checked={reviewRecord.rating === '3'}/><label>3</label>
+              <input type="radio" name="rating" onChange={handleInputChange} value="4" id="4" checked={reviewRecord.rating === '4'}/><label>4</label>
+              <input type="radio" name="rating" onChange={handleInputChange} value="5" id="5" checked={reviewRecord.rating === '5'}/><label>5</label>
+          </fieldset>
+          <label htmlFor="body" className="primary flex-child-auto" >
+            Review:
+            <textarea 
+              className="cell large-12 review-input" 
+              id="body" 
+              name="body" 
+              onChange={handleInputChange} 
+              value={reviewRecord.body} 
+              rows="2"
+              wrap="soft"
+            /> 
+          </label>
+        </div>
+        <input className="button cell large-3" type="submit" value="Add your review!"/>
+      </form>
     )
   }
 }
