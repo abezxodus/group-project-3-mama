@@ -1,4 +1,5 @@
 class Api::V1::ReviewsController < ApiController
+  # before_action :authenticate_user!
 
   def create
     review = Review.new(review_params)
@@ -9,7 +10,7 @@ class Api::V1::ReviewsController < ApiController
     if review.save
       render json: review
     else
-      render json: { errors: review.errors.full_messages.to_sentence }
+      render json: { errors: review.errors.full_messages }
     end
     
   end
