@@ -18,8 +18,8 @@ const MovieShowContainer = (props) => {
         const parsedMovie = await response.json()
         setMovie(parsedMovie.movie)
       }
-    } catch(err) {
-      console.error(`Error in Fetch: ${err.message}`)
+    } catch(error) {
+      console.log(`Error in Fetch: ${error.message}`)
     }
   }
 
