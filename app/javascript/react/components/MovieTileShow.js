@@ -39,21 +39,23 @@ const MovieTileShow = (props) => {
   return (
     <div className="custom-text">
       <h1 className="show-page-movie-title">{props.movie.title}</h1>
-      <div className="grid-x">
-      {image}
+      <div className="grid-x grid-margin-x">
+        {image}
 
-      <ul className=" no-bullets movie-info cell medium-6 large-6">
-        <li><b>Release year:</b> {props.movie.year}</li>
-        <li><b>Directed by:</b> {director}</li>
-        <li><b>Synopsis:</b> {description}</li>
-        {winner}
-      </ul>
-      <ReviewForm movie={props.movie} setMovie={props.setMovie}/>
-      <div className="reviews">
-        <h5>Reviews ({reviews.length})</h5>
-        {reviews}
-      </div>
-      <a href='/movies'>Return to Homepage</a>
+        <ul className=" no-bullets movie-info cell medium-6 large-6">
+          <li><b>Release year:</b> {props.movie.year}</li>
+          <li><b>Directed by:</b> {director}</li>
+          <li><b>Synopsis:</b> {description}</li>
+          {winner}
+        </ul>
+        <div id="review-section" className="cell">
+          <ReviewForm movie={props.movie} setMovie={props.setMovie}/>
+          <div className="reviews cell">
+            <h5>Reviews ({reviews.length})</h5>
+            {reviews}
+          </div>
+          <a className="cell" href='/movies'>Return to Homepage</a>
+        </div>
       </div>
     </div>
   )

@@ -81,7 +81,7 @@ const ReviewForm = (props) => {
   
   if (user === "none") {
     return (
-      <div className="callout grid-x grid-padding-x">
+      <div className="callout cell grid-x grid-padding-x">
         <h5 className="cell text-center">
           You must be signed in to post a review. Press the button below to sign in.
         </h5>
@@ -116,7 +116,7 @@ const ReviewForm = (props) => {
             /> 
           </label>
         </div>
-        <input className="button cell large-3" type="submit" value="Add your review!"/>
+        <input className="button-group custom-button cell large-3" type="submit" value="Add your review!"/>
       </form>
     )
   }
