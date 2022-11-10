@@ -27,14 +27,15 @@ const NewMovieForm = (props) => {
         throw(error)
       }
       const responseBody = await response.json()
-      if(responseBody.movie){
+      if (responseBody.movie) { 
         setMovie(responseBody.movie) 
-      } else {
-        setErrors(responseBody.errors)
-      }
-
-    } catch(error) {
-      console.log(`Error in fetch: ${error.message}`)
+      } else if (responseBody.errors) {
+        setErrors(responseBody.errors) 
+      } else if (responseBody.error[0] === "Only admins have access to this feature") {
+      alert("Only admins have access to this feature")
+      } 
+      } catch(error) {
+        console.log(`Error in fetch: ${error.message}`)
     }
   }
 
@@ -53,5 +54,6 @@ const NewMovieForm = (props) => {
     </div>
   )
 }
+
 
 export default NewMovieForm

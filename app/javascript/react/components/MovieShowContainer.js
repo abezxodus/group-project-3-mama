@@ -9,7 +9,11 @@ const MovieShowContainer = (props) => {
   const fetchMovie = async () => {
     const url = window.location.pathname
     try {
-      const response = await fetch(`/api/v1${url}`)
+      const response = await fetch(`/api/v1${url}`
+      ,{
+        credentials: "same-origin"
+      }
+      )
       if(!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error (errorMessage)

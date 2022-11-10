@@ -6,7 +6,11 @@ const IndexContainer = (props) => {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`/api/v1/movies`)
+      const response = await fetch(`/api/v1/movies`
+      // , {
+      //   credentials: "same-origin"
+      // }
+      )
       if(!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error (errorMessage)
