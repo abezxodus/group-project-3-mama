@@ -22,4 +22,18 @@ class Api::V1::MoviesController < ApiController
   def movie_params
     params.require(:movie).permit(:title, :year, :director, :image, :description)
   end
+
+  def authenticated
+    if !user_signed_in?
+      render json: {error: ["You need to be signed in first"]}
+    end
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+      # raise ActionController::RoutingError.new("Not Found")
+    end
+  end
 end
