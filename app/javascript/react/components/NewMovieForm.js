@@ -8,15 +8,18 @@ const NewMovieForm = (props) => {
   const [errors, setErrors] = useState([])
 
   const addMovie = async (formPayload) => {
+    let body = new FormData()
+    body.append("title", formPayload.title)
+    body.append("year", formPayload.year)
+    body.append("director", formPayload.director)
+    body.append("image", formPayload.image)
+    body.append("description", formPayload.description)
+    body.append("award", formPayload.award)
     try {
       const response = await fetch("/api/v1/movies", {
         credentials: "same-origin",
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(formPayload)
+        body: body
       })
       if(!response.ok){
         const errorMessage = `${response.status} (${response.statusText})`

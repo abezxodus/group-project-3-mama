@@ -1,4 +1,5 @@
 class Api::V1::MoviesController < ApiController
+  skip_before_action :verify_authenticity_token
 
   before_action :authorize_admin, only: [:create]
 
@@ -22,6 +23,6 @@ class Api::V1::MoviesController < ApiController
   private
   
   def movie_params
-    params.require(:movie).permit(:title, :year, :director, :image, :description)
+    params.permit(:title, :year, :director, :image, :description, :award)
   end
 end

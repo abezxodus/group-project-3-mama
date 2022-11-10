@@ -4,8 +4,93 @@
   color: white;
   border: 1px solid transparent;
   border-width: 1px;
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
 }
 
 .custom-button:hover {
-  background-color: #C08843;
+  background-color: white;
+  color: #C79F27;
+  border-color: #C79F27;
+}
+
+.custom-text {
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
+  color: black;
+  font-size: 20px;
+}
+
+.file-upload {
+  text-align: center;
+  margin: 1em;
+  margin-bottom: .5em;
+  padding: .40em;
+  padding-bottom: .1em;
+  background-color: #C79F27;
+  border: 1px solid transparent;
+  border-width: 1.40px;
+  border-color: #CACACA;
+  color: white;
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
+}
+
+.file-upload:hover {
+  background-color: white;
+  color: #C79F27;
+  border: 1px solid transparent;
+  border-width: 1px;
+  border-color: #C79F27;
+}
+
+.custom-header {
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif;
+}
+
+.movie-index-title {
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif; 
+}
+
+.custom-margin {
+  /* border: 2px; */
+  /* border: solid; */
+  /* border-color: black; */
+  margin: 2px, 0px, 10px, 10px;
+  padding: 10px;
+}
+
+.main-title{
+  color: white;
+  background: #C79F27;
+  padding: 0.5rem;
+
+}
+
+.top-bar-text {
+  font-family: "futura book legacy","FuturaPT-Book",Futura,"Trebuchet MS",Arial,sans-serif; 
+  text-align: center;
+}
+
+.top-bar-text a {
+  color: white;
+}
+
+.top-bar-text a:hover {
+  color: black;
+}
+
+.custom-link {
+  color: black;
+  font-size: 25px; 
+}
+
+.custom-link:hover {
+  font-weight: bold;
+  border: solid;
+  border: 4px;
+  color: #C79F27;  
+}
+
+.award-border {
+  border: solid;
+  border: 4px;
+  border-color: #C79F27;
 }

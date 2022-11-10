@@ -3,9 +3,11 @@ class CreateMovies < ActiveRecord::Migration[5.2]
     create_table :movies do |t|
       t.string :title, null: false
       t.string :director
-      t.string :image, default: "https://ih1.redbubble.net/image.1030805532.6483/st,small,845x845-pad,1000x1000,f8f8f8.jpg"
+      t.string :image
+      t.string :seededimg
       t.string :year, null: false
       t.string :description
+      t.boolean :award, default: false
 
       t.timestamps
     end

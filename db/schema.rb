@@ -18,9 +18,11 @@ ActiveRecord::Schema.define(version: 2022_11_03_141808) do
   create_table "movies", force: :cascade do |t|
     t.string "title", null: false
     t.string "director"
-    t.string "image", default: "https://ih1.redbubble.net/image.1030805532.6483/st,small,845x845-pad,1000x1000,f8f8f8.jpg"
+    t.string "image"
+    t.string "seededimg"
     t.string "year", null: false
     t.string "description"
+    t.boolean "award", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

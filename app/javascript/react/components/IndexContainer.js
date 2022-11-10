@@ -34,14 +34,19 @@ const IndexContainer = (props) => {
         key={movie.id}
         id={movie.id}
         title={movie.title}
+        image={movie.image_url}
+        seededimg={movie.seededimg}
+        award={movie.award}
       />
     )
   })
   
   return (
     <div>
-      <h2>All Movies</h2>
+      <h2 className='custom-header'>All Movies</h2>
+      <div className='movie-index-title'>
       {IndexMovieTiles}
+      </div>
     </div>
   )
 }
