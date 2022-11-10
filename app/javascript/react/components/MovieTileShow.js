@@ -54,7 +54,8 @@ const MovieTileShow = (props) => {
         {reviews}
       </div>
       <a href='/movies'>Return to Homepage</a>
-  </div>
+      </div>
+    </div>
   )
 }
 
