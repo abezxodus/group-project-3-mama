@@ -1,6 +1,8 @@
 class Api::V1::MoviesController < ApiController
   skip_before_action :verify_authenticity_token
 
+  before_action :authorize_admin, only: [:create]
+
   def index
     render json: Movie.all
   end
