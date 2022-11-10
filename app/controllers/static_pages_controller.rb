@@ -6,4 +6,3 @@ class StaticPagesController < ApplicationController
   def authorized  
   end
 end
-
