@@ -40,7 +40,7 @@ const IndexContainer = (props) => {
   return (
     <div>
       <h2 className='custom-header'>All Movies</h2>
-      <div className='movie-index-title'>
+      <div className='movie-index-title grid-x'>
       {IndexMovieTiles}
       </div>
     </div>

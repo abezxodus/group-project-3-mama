@@ -10,14 +10,14 @@ const IndexMovieTile = (props) => {
 
   let image
   if (props.seededimg) {
-    image = <img src={props.seededimg}/>
+    image = <img src={props.seededimg} className="index-page-poster"/>
   } else {
-    image = <img src={props.image}/>
+    image = <img src={props.image} className="index-page-poster"/>
   }
   
   // debugger
   return(
-    <div className="custom-margin award-border">
+    <div className="custom-margin award-border cell medium-6 large-4">
       <Link to={`/movies/${props.id}`} className="custom-link">
         {image}
       </Link>
