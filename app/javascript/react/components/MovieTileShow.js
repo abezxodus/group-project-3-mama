@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from 'react'
 import ReviewTile from "./ReviewTile"
-
+import ReviewForm from "./ReviewForm"
 
 const MovieTileShow = (props) => {
+
   let director = "No Director Supplied"
   let description = "No Synopsis Supplied"
   let winner
@@ -29,12 +30,12 @@ const MovieTileShow = (props) => {
   const reviews = props.movie.reviews.map((review) => {
     return (
       <ReviewTile 
-      key={review.body}
-      rating={review.rating}
-      body={review.body}
+        key={review.body}
+        rating={review.rating}
+        body={review.body}
+        setMovie={props.setMovie}
       />)
   })
-  
   return (
     <div className="custom-text">
       <h1>{props.movie.title}</h1>
@@ -45,9 +46,9 @@ const MovieTileShow = (props) => {
         <li>Synopsis: {description}</li>
         {winner}
       </ul>
-      
-
+      <ReviewForm movie={props.movie} setMovie={props.setMovie}/>
       <div className="reviews">
+        <h5>Reviews ({reviews.length})</h5>
         {reviews}
       </div>
       <a href='/movies'>Return to Homepage</a>

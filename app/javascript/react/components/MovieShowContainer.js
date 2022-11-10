@@ -31,6 +31,7 @@ const MovieShowContainer = (props) => {
     <MovieTileShow
       key={movie.id}
       movie={movie}
+      setMovie={setMovie}
     />
   )
 }
