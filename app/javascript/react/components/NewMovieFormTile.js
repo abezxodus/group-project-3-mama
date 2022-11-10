@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Dropzone from "react-dropzone"
 import ErrorList from "./ErrorList";
 import _ from "lodash"
 
@@ -38,12 +39,20 @@ const NewMovieFormTile = (props) => {
         }
       }
     })
-  
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }
 
-  return (   
+
+  const handlePictureUpload = (acceptedPictureFile) => {
+    setMovieRecord({
+      ...movieRecord,
+      image: acceptedPictureFile[0]
+    })
+  }
+
+  return (  
+    <div className="custom-text">
     <form className="callout grid-x grid-margin-x" onSubmit={submitHandler}>
       <ErrorList errors={errors}/>
 
@@ -61,16 +70,32 @@ const NewMovieFormTile = (props) => {
         Director
         <input id="director" type="text" name="director" onChange={handleInputChange} value={movieRecord.director}/>
       </label>
+
+      <label  className="file-upload cell small-12 medium-6 large-4">
+        <Dropzone onDrop={handlePictureUpload}>
+          {({getRootProps, getInputProps}) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
+      </label>
       
-      <label  className="cell small-12 medium-6 large-12" htmlFor="description">
+      <label  className="cell small-12 medium-12 large-12" htmlFor="description">
         Description
         <input id="description" type="text" name="description" onChange={handleInputChange} value={movieRecord.description}/>
       </label>
 
       <div className="button-group">
-        <input className="custom-button" type="submit" value="Submit"/>
+        <input className="custom-button" type="submit" value="SUBMIT"/>
       </div>
   </form>
+
+  <a href='/movies'>Return to Homepage</a>
+  </div>
   )
 }
 

@@ -1,4 +1,5 @@
 class Api::V1::MoviesController < ApiController
+  skip_before_action :verify_authenticity_token
 
   def index
     render json: Movie.all
@@ -20,6 +21,6 @@ class Api::V1::MoviesController < ApiController
   private
   
   def movie_params
-    params.require(:movie).permit(:title, :year, :director, :image, :description)
+    params.permit(:title, :year, :director, :image_url, :description, :award)
   end
 end

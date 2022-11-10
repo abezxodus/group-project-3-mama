@@ -6,6 +6,8 @@ const MovieShowContainer = (props) => {
     reviews: []
   })
 
+  // debugger
+
   const fetchMovie = async () => {
     const url = window.location.pathname
     try {
@@ -18,8 +20,8 @@ const MovieShowContainer = (props) => {
         const parsedMovie = await response.json()
         setMovie(parsedMovie.movie)
       }
-    } catch(err) {
-      console.error(`Error in Fetch: ${err.message}`)
+    } catch(error) {
+      console.log(`Error in Fetch: ${error.message}`)
     }
   }
 
