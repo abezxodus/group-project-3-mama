@@ -19,11 +19,11 @@ const MovieTileShow = (props) => {
   if (props.movie.award === true) {
     winner = <li>Academy award winner!</li>
   }
-
+   
   if (props.movie.seededimg) {
-    image = <img src={props.movie.seededimg}/>
+    image = <img src={props.movie.seededimg} className="show-page-poster"/>
   } else {
-    image = <img src={props.movie.image}/>  
+    image = <img src={props.movie.image} className="show-page-poster"/>  
   }
 
   const reviews = props.movie.reviews.map((review) => {
@@ -37,16 +37,18 @@ const MovieTileShow = (props) => {
   
   return (
     <div className="custom-text">
-      <h1>{props.movie.title}</h1>
+      <h1 className="show-page-movie-title">{props.movie.title}</h1>
+      <div className="grid-x">
       {image}
-      <ul>
-        <li>Release year: {props.movie.year}</li>
-        <li>Directed by: {director}</li>
-        <li>Synopsis: {description}</li>
+
+      <ul className=" no-bullets movie-info cell medium-6 large-6">
+        <li><b>Release year:</b> {props.movie.year}</li>
+        <li><b>Directed by:</b> {director}</li>
+        <li><b>Synopsis:</b> {description}</li>
         {winner}
       </ul>
-      
-
+      </div>
+    
       <div className="reviews">
         {reviews}
       </div>

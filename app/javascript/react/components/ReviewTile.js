@@ -3,8 +3,10 @@ import React from "react"
 const ReviewTile = (props) => {
   return (
     <div>
-      <li>Rating: {props.rating}</li>
-      <p>Review: {props.body}</p>
+      <ul className="no-bullets">
+      <li className="reviews"><b>Rating: </b> {props.rating}</li>
+      <li className="reviews"><b>Review: </b> {props.body}</li>
+      </ul> 
     </div>
   )
 }
