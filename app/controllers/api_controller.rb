@@ -4,7 +4,8 @@ class ApiController < ApplicationController
   protected
 
   def authorize_admin
-    if !user_signed_in? || !(current_user.role == "admin")
+    binding.pry
+    if !user_signed_in? || (current_user.role != "admin")
       render json: {error: ["Only admins have access to this feature"]}
     end
   end

@@ -48,7 +48,7 @@ const MovieTileShow = (props) => {
           <li><b>Synopsis:</b> {description}</li>
           {winner}
         </ul>
-        <div id="review-section" className="cell">
+        <div className="cell review-section">
           <ReviewForm movie={props.movie} setMovie={props.setMovie}/>
           <div className="reviews cell">
             <h5>Reviews ({reviews.length})</h5>

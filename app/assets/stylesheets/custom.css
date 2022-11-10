@@ -88,12 +88,6 @@
   color: #C79F27;  
 }
 
-.award-border {
-  border: solid;
-  border: 4px;
-  border-color: #C79F27;
-}
-
 img.index-page-poster {
   height: 475px;
   width: 335px;
@@ -130,7 +124,10 @@ li.reviews {
   font-size: 40px;
 }
 
-#review-section {
+.review-section {
   padding: 1em 1em;
 }
 
+.award-border {
+  border: 0.5em solid #C79F27;
+}

@@ -12,6 +12,7 @@ class Api::V1::MoviesController < ApiController
   end
 
   def create
+    binding.pry
     movie = Movie.new(movie_params)
     if movie.save
       render json: movie, serializer: MovieShowSerializer
