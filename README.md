@@ -5,20 +5,22 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+ruby-2.7.3
+Rails 5.2.8.1
+PostgreSQL 14.5
+Devise gem
 
-* System dependencies
+Instructions to Run Application Locally
+I. Set up the project
+git clone https://github.com/abezxodus/group-project-3-mama.git
+bundle install (To install gem dependencies)
+yarn install (To install package manager)
 
-* Configuration
+II. Create and Seed Database
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:seed 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+III. In a separate terminal window,
+run bundle exec rails s
+navigate to localhost/3000
