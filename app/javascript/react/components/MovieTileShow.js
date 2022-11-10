@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from 'react'
 import ReviewTile from "./ReviewTile"
-
+import ReviewForm from "./ReviewForm"
 
 const MovieTileShow = (props) => {
+
   let director = "No Director Supplied"
   let description = "No Synopsis Supplied"
   let winner
@@ -23,18 +24,18 @@ const MovieTileShow = (props) => {
   if (props.movie.seededimg) {
     image = <img src={props.movie.seededimg} className="show-page-poster"/>
   } else {
-    image = <img src={props.movie.image} className="show-page-poster"/>  
+    image = <img src={props.movie.image_url} className="show-page-poster"/>  
   }
 
   const reviews = props.movie.reviews.map((review) => {
     return (
       <ReviewTile 
-      key={review.body}
-      rating={review.rating}
-      body={review.body}
+        key={review.body}
+        rating={review.rating}
+        body={review.body}
+        setMovie={props.setMovie}
       />)
   })
-  
   return (
     <div className="custom-text">
       <h1 className="show-page-movie-title">{props.movie.title}</h1>
@@ -47,9 +48,9 @@ const MovieTileShow = (props) => {
         <li><b>Synopsis:</b> {description}</li>
         {winner}
       </ul>
-      </div>
-    
+      <ReviewForm movie={props.movie} setMovie={props.setMovie}/>
       <div className="reviews">
+        <h5>Reviews ({reviews.length})</h5>
         {reviews}
       </div>
       <a href='/movies'>Return to Homepage</a>

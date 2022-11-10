@@ -21,6 +21,6 @@ class Api::V1::MoviesController < ApiController
   private
   
   def movie_params
-    params.permit(:title, :year, :director, :image_url, :description, :award)
+    params.permit(:title, :year, :director, :image, :description, :award)
   end
 end

@@ -14,6 +14,7 @@ const NewMovieForm = (props) => {
     body.append("director", formPayload.director)
     body.append("image", formPayload.image)
     body.append("description", formPayload.description)
+    body.append("award", formPayload.award)
     try {
       const response = await fetch("/api/v1/movies", {
         credentials: "same-origin",
