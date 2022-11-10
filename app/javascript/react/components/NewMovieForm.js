@@ -18,7 +18,7 @@ const NewMovieForm = (props) => {
         },
         body: JSON.stringify(formPayload)
       })
-      if(!response.ok) {
+      if(!response.ok){
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
         throw(error)
@@ -26,9 +26,8 @@ const NewMovieForm = (props) => {
       const responseBody = await response.json()
       if (responseBody.movie) { 
         setMovie(responseBody.movie) 
-      
       } else if (responseBody.errors) {
-        setErrors(responseBody.errors)
+        setErrors(responseBody.errors) 
       } else if (responseBody.error[0] === "Only admins have access to this feature") {
       alert("Only admins have access to this feature")
       } 
