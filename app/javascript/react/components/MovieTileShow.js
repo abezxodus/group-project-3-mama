@@ -23,7 +23,7 @@ const MovieTileShow = (props) => {
   if (props.movie.seededimg) {
     image = <img src={props.movie.seededimg}/>
   } else {
-    image = <img src={props.movie.image}/>  
+    image = <img src={props.movie.image_url}/>  
   }
 
   const reviews = props.movie.reviews.map((review) => {

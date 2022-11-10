@@ -11,6 +11,7 @@ class Api::V1::MoviesController < ApiController
 
   def create
     movie = Movie.new(movie_params)
+    binding.pry
     if movie.save
       render json: movie, serializer: MovieShowSerializer
     else
@@ -21,6 +22,6 @@ class Api::V1::MoviesController < ApiController
   private
   
   def movie_params
-    params.permit(:title, :year, :director, :image_url, :description, :award)
+    params.permit(:title, :year, :director, :image, :description, :award)
   end
 end

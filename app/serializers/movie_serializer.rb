@@ -1,5 +1,5 @@
 class MovieSerializer < ActiveModel::Serializer
-  attributes :id, :title, :image_url, :seededimg
+  attributes :id, :title, :image, :seededimg, :image_url
 
   def image_url
     if object.image.blank?
